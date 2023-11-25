@@ -149,6 +149,12 @@
             notaAtribuida.value = pontuacao;
             formdin.appendChild(notaAtribuida);
 
+            var disciplinaAtual = document.createElement('input');
+            disciplinaAtual.tybe = 'hidden';
+            disciplinaAtual.name = 'disciplina';
+            disciplinaAtual.value = 'Redes 1'
+            formdin.appendChild(disciplinaAtual);
+
             // Adicionar formulário ao corpo do documento
             document.body.appendChild(formdin);
 
