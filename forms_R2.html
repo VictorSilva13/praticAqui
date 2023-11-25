@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes 2 - PraticAqui</title>
+    <style>
+        body {
+            background-color: #9aff9a;
+            /* Verde Claro */
+            color: #fff;
+            /* Branco */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            /* Branco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: black;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            /* Verde */
+            color: #fff;
+            /* Branco */
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            /* Verde mais escuro */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>PraticAqui - Redes de Computadores 2</h1>
+    <form id="form1">
+        <label for="pergunta1">Pergunta 1: Qual a principal funcao do protocolo ARP (Address Resolution Protocol) em uma rede Ethernet?</label>
+        <select id="pergunta1" name="pergunta1">
+            <option value="a">Determinar o endereco IP associado a um nome de host</option>
+            <option value="b">Descobrir o endereco MAC associado a um endereco IP</option>
+            <option value="c">Roteamento de pacotes entre redes</option>
+            <option value="d">Garantir a entrega confiavel de pacotes na rede</option>
+        </select>
+
+        <label for="pergunta2">Pergunta 2: Do que se trata um endereco MAC em uma rede Ethernet?</label>
+        <select id="pergunta2" name="pergunta2">
+            <option value="a">Um endereco IP global</option>
+            <option value="b">Um identificador unico para dispositivos na mesma rede local</option>
+            <option value="c">Um numero de porta associado a um servico especifico</option>
+            <option value="d"> Um codigo de barras exclusivo para equipamentos de rede</option>
+        </select>
+
+        <label for="pergunta3">Pergunta 3: Qual a funcao principal do protocolo ICMP (Internet Control Message Protocol) em uma rede IPv4?</label>
+        <select id="pergunta3" name="pergunta3">
+            <option value="a">Encaminhamento de pacotes entre redes</option>
+            <option value="b">Resolucao de enderecos IP</option>
+            <option value="c">Controle de congestionamento de rede</option>
+            <option value="d">Envio de mensagens de erro e status</option>
+        </select>
+
+        <label for="pergunta4">Pergunta 4: O que significa TTL (Time to Live) em cabecalhos de pacotes IPv4?</label>
+        <select id="pergunta4" name="pergunta4">
+            <option value="a">Tempo maximo permitido para a transmissao de um pacote</option>
+            <option value="b">Numero maximo de saltos que um pacote pode fazer na rede</option>
+            <option value="c">Tempo necessario para estabelecer uma conexao TCP</option>
+            <option value="d">Tempo de validade de um endereco IP</option>
+        </select>
+
+        <label for="pergunta5">Pergunta 5: Como funciona o protocolo IGMP (Internet Group Management Protocol) em relacao ao trafego multicast em uma rede IP?</label>
+        <select id="pergunta5" name="pergunta5">
+            <option value="a">Define a rota de encaminhamento para pacotes multicast na rede</option>
+            <option value="b">Permite que os dispositivos se juntem ou deixem grupos multicast</option>
+            <option value="c">Garante a entrega confiavel de pacotes multicast</option>
+            <option value="d">Mapeia endereços IP multicast para enderecos MAC unicast</option>
+        </select>
+
+        <input type="button" value="Enviar" onclick="enviarFormulario('form1');">
+    </form>
+
+    <script>
+        function enviarFormulario(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            let pontuacao = 0;
+
+            // Compare as respostas com as respostas corretas
+            const respostasCorretas = {
+                pergunta1: 'b',
+                pergunta2: 'b',
+                pergunta3: 'd',
+                pergunta4: 'b',
+                pergunta5: 'b',
+            };
+
+            formData.forEach((resposta, pergunta) => {
+                // Verifique se a resposta está correta
+                if (resposta === respostasCorretas[pergunta]) {
+                    pontuacao++;
+                }
+            });
+
+            alert(`Pontos: ${pontuacao}/5`);
+
+            // Criar um formulário dinâmico
+            var formdin = document.createElement('form');
+            formdin.method = 'post';
+
+            // Adicionar campos ao formulário
+            var notaAtribuida = document.createElement('input');
+            notaAtribuida.type = 'hidden';
+            notaAtribuida.name = 'nota';
+            notaAtribuida.value = pontuacao;
+            formdin.appendChild(notaAtribuida);
+
+            // Adicionar formulário ao corpo do documento
+            document.body.appendChild(formdin);
+
+            // Enviar formulário
+            formdin.submit();
+
+        }
+
+
+    </script>
+</body>
+
+</html>

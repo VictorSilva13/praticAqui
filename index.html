@@ -1,0 +1,98 @@
+<!DOCTYPE html5>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <title>PraticAqui</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="main_box">
+        <form id="praticaForm">
+            <h2>Que tal praticar um pouco?</h2>
+            <br>
+
+            <div class="input_name">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite um apelido..." autofocus="true"
+                    onblur="validarNome()">
+                <p id="mensagem"></p>
+            </div>
+
+            <div class="input_subject">
+                <h4>Escolha a disciplina para praticar:</h4>
+                <button class="btn" type="button" onclick="validarEEnviarFormulario('R1')">Redes de Computadores 1</button>
+                <button class="btn" type="button" onclick="validarEEnviarFormulario('R2')">Redes de Computadores 2</button>
+                <button class="btn" type="button" onclick="validarEEnviarFormulario('BD')">Banco de Dados</button>
+                <button class="btn" type="button" onclick="validarEEnviarFormulario('E1')">Eletromagnetismo 1</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function enviarFormulario(disciplina) {
+            var nome = document.getElementById('nome').value;
+
+            if (!verificaString(nome)) {
+                document.getElementById('mensagem').textContent = "Por favor, digite um nome valido (apenas letras e numeros).";
+                return;
+            }
+
+            // Criar um formulário dinâmico
+            var form = document.createElement('form');
+            form.method = 'post';
+            //form.action = '192.168.1.2:8080'; // Substitua pelo seu endereço de servidor
+
+            // Adicionar campos ao formulário
+            var campoNome = document.createElement('input');
+            campoNome.type = 'hidden';
+            campoNome.name = 'nome';
+            campoNome.value = nome;
+            form.appendChild(campoNome);
+
+            var campoDisciplina = document.createElement('input');
+            campoDisciplina.type = 'hidden';
+            campoDisciplina.name = 'disciplina';
+            campoDisciplina.value = disciplina;
+            form.appendChild(campoDisciplina);
+
+            // Adicionar formulário ao corpo do documento
+            document.body.appendChild(form);
+
+            // Enviar formulário
+            form.submit();
+        }
+        function validarEEnviarFormulario(disciplina) {
+            validarNome();
+            var mensagem = document.getElementById('mensagem');
+
+            if (mensagem.textContent === "") {
+                // Se não houver mensagem de erro, o nome é válido, então envie o formulário
+                enviarFormulario(disciplina);
+            }
+        }
+        function verificaString(str) {
+            // Expressão regular para verificar se a string contém apenas letras e números
+            var regex = /^[a-zA-Z0-9]+$/;
+
+            // Testar a string contra a expressão regular
+            return regex.test(str);
+        }
+
+        function validarNome() {
+            var nomeInput = document.getElementById('nome');
+            var mensagem = document.getElementById('mensagem');
+
+            if (!verificaString(nomeInput.value)) {
+                nomeInput.classList.add('invalid');
+                mensagem.textContent = "Por favor, digite um nome valido (apenas letras e numeros).";
+            } else {
+                nomeInput.classList.remove('invalid');
+                mensagem.textContent = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
