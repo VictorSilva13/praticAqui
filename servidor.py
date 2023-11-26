@@ -51,8 +51,8 @@ def handle_request(request, client_address):
                 dados_corpo = corpo[0]
                 print("DADOS DO CORPO:::")
                 print(dados_corpo)
-                #nome=augusto&disciplina=R2
-                #nota=4
+                # nome=augusto&disciplina=R2
+                # nota=4
 
                 # Parse dos parâmetros da URL
                 params = parse_qs(dados_corpo)

@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Eletromagnetismo 1 - PraticAqui</title>
+    <style>
+        body {
+            background-color: #9aff9a;
+            /* Verde Claro */
+            color: #fff;
+            /* Branco */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            /* Branco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: black;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            /* Verde */
+            color: #fff;
+            /* Branco */
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            /* Verde mais escuro */
+        }
+    </style>
 </head>
+
 <body>
-    Formulario para Eletromagnetismo 1
+    <h1>PraticAqui - Eletromagnetismo 1</h1>
+    <form id="form1">
+        <label for="pergunta1">Pergunta 1: O que acontece com a forca magnetica entre dois fios paralelos percorridos
+            por correntes eletricas quando a distancia entre eles aumenta?</label>
+        <select id="pergunta1" name="pergunta1">
+            <option value="a">Aumenta</option>
+            <option value="b">Permanece constante</option>
+            <option value="c">Dobra</option>
+            <option value="d">Diminui</option>
+        </select>
+
+        <label for="pergunta2">Pergunta 2: Qual lei descreve a forca entre duas cargas eletricas?</label>
+        <select id="pergunta2" name="pergunta2">
+            <option value="a">Lei de Gauss</option>
+            <option value="b">Lei de Ampere</option>
+            <option value="c">Lei de Coulomb</option>
+            <option value="d">Lei de Ohm</option>
+        </select>
+
+        <label for="pergunta3">Pergunta 3: Em um transformador ideal, se o numero de espiras no enrolamento primario for
+            maior que o numero de espiras no enrolamento secundario, o que acontece com a voltagem?</label>
+        <select id="pergunta3" name="pergunta3">
+            <option value="a">Aumenta</option>
+            <option value="b">Diminui</option>
+            <option value="c">Permanece constante</option>
+            <option value="d">Torna-se zero</option>
+        </select>
+
+        <label for="pergunta4">Pergunta 4: Qual a unidade do SI para a intensidade do campo magnetico (B)?</label>
+        <select id="pergunta4" name="pergunta4">
+            <option value="a">Ohm</option>
+            <option value="b">Ampere</option>
+            <option value="c">Tesla</option>
+            <option value="d">Coulomb</option>
+        </select>
+
+        <label for="pergunta5">Pergunta 5: Em qual unidade se mede a resistividade eletrica de um material?</label>
+        <select id="pergunta5" name="pergunta5">
+            <option value="a">Ohm</option>
+            <option value="b">Ampere</option>
+            <option value="c">Coulomb</option>
+            <option value="d">Ohm por metro</option>
+        </select>
+
+        <input type="button" value="Enviar" onclick="enviarFormulario('form1');">
+    </form>
+
+    <script>
+        function enviarFormulario(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            let pontuacao = 0;
+
+            // Compare as respostas com as respostas corretas
+            const respostasCorretas = {
+                pergunta1: 'd',
+                pergunta2: 'c',
+                pergunta3: 'a',
+                pergunta4: 'c',
+                pergunta5: 'd',
+            };
+
+            formData.forEach((resposta, pergunta) => {
+                // Verifique se a resposta está correta
+                if (resposta === respostasCorretas[pergunta]) {
+                    pontuacao++;
+                }
+            });
+
+            alert(`Pontos: ${pontuacao}/5`);
+
+            // Criar um formulário dinâmico
+            var formdin = document.createElement('form');
+            formdin.method = 'post';
+
+            // Adicionar campos ao formulário
+            var notaAtribuida = document.createElement('input');
+            notaAtribuida.type = 'hidden';
+            notaAtribuida.name = 'nota';
+            notaAtribuida.value = pontuacao;
+            formdin.appendChild(notaAtribuida);
+
+            var disciplinaAtual = document.createElement('input');
+            disciplinaAtual.tybe = 'hidden';
+            disciplinaAtual.name = 'disciplina';
+            disciplinaAtual.value = 'Eletromagnetismo 1'
+            formdin.appendChild(disciplinaAtual);
+
+            // Adicionar formulário ao corpo do documento
+            document.body.appendChild(formdin);
+
+            // Enviar formulário
+            formdin.submit();
+
+        }
+
+
+    </script>
 </body>
+
 </html>

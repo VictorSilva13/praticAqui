@@ -1,11 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Banco de Dados - PraticAqui</title>
+    <style>
+        body {
+            background-color: #9aff9a;
+            /* Verde Claro */
+            color: #fff;
+            /* Branco */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            /* Branco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: black;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            /* Verde */
+            color: #fff;
+            /* Branco */
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+            /* Verde mais escuro */
+        }
+    </style>
 </head>
+
 <body>
-    Formulario para Banco de Dados
+    <h1>PraticAqui - Banco de Dados</h1>
+    <form id="form1">
+        <label for="pergunta1">Pergunta 1: Qual a funcao principal da linguagem SQL em um sistema de gerenciamento de
+            banco de dados?</label>
+        <select id="pergunta1" name="pergunta1">
+            <option value="a">Definir o layout visual das tabelas</option>
+            <option value="b">Realizar calculos matematicos em dados</option>
+            <option value="c">Manipular e consultar dados em um banco de dados</option>
+            <option value="d">Projetar interfaces de usuario</option>
+        </select>
+
+        <label for="pergunta2">Pergunta 2: Do que se trata uma chave primaria em um banco de dados relacional?</label>
+        <select id="pergunta2" name="pergunta2">
+            <option value="a">Um indice que acelera consultas</option>
+            <option value="b">Um campo que armazena valores unicos e nao nulos para identificar exclusivamente uma linha
+                em uma tabela</option>
+            <option value="c">Um tipo de dado para armazenar numeros inteiros</option>
+            <option value="d">Um campo que permite valores duplicados</option>
+        </select>
+
+        <label for="pergunta3">Pergunta 3: Qual o objetivo da normalizacao em bancos de dados relacionais?</label>
+        <select id="pergunta3" name="pergunta3">
+            <option value="a">Reduzir o desempenho do banco de dados</option>
+            <option value="b">Aumentar a redundancia dos dados</option>
+            <option value="c">Organizar os dados para eliminar redundancias e dependencias</option>
+            <option value="d">Facilitar a insercao de dados no banco de dados</option>
+        </select>
+
+        <label for="pergunta4">Pergunta 4: Qual a diferenca entre INNER JOIN e LEFT JOIN em uma consulta SQL?</label>
+        <select id="pergunta4" name="pergunta4">
+            <option value="a">Nao existe diferenca</option>
+            <option value="b">INNER JOIN retorna apenas as linhas com correspondencia em ambas as tabelas, enquanto LEFT
+                JOIN retorna todas as linhas da tabela na esquerda e as correspondentes da tabela na direita</option>
+            <option value="c">LEFT JOIN retorna todas as linhas de ambas as tabelas</option>
+            <option value="d"> INNER JOIN retorna todas as linhas de ambas as tabelas</option>
+        </select>
+
+        <label for="pergunta5">Pergunta 5: Em um modelo relacional, o que representa uma relacao entre tabelas?</label>
+        <select id="pergunta5" name="pergunta5">
+            <option value="a">Um campo</option>
+            <option value="b">Uma chave estrangeira</option>
+            <option value="c">Um indice</option>
+            <option value="d">Uma associacao logica entre colunas de diferentes tabelas</option>
+        </select>
+
+        <input type="button" value="Enviar" onclick="enviarFormulario('form1');">
+    </form>
+
+    <script>
+        function enviarFormulario(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            let pontuacao = 0;
+
+            // Compare as respostas com as respostas corretas
+            const respostasCorretas = {
+                pergunta1: 'c',
+                pergunta2: 'b',
+                pergunta3: 'c',
+                pergunta4: 'b',
+                pergunta5: 'd',
+            };
+
+            formData.forEach((resposta, pergunta) => {
+                // Verifique se a resposta está correta
+                if (resposta === respostasCorretas[pergunta]) {
+                    pontuacao++;
+                }
+            });
+
+            alert(`Pontos: ${pontuacao}/5`);
+
+            // Criar um formulário dinâmico
+            var formdin = document.createElement('form');
+            formdin.method = 'post';
+
+            // Adicionar campos ao formulário
+            var notaAtribuida = document.createElement('input');
+            notaAtribuida.type = 'hidden';
+            notaAtribuida.name = 'nota';
+            notaAtribuida.value = pontuacao;
+            formdin.appendChild(notaAtribuida);
+
+            var disciplinaAtual = document.createElement('input');
+            disciplinaAtual.tybe = 'hidden';
+            disciplinaAtual.name = 'disciplina';
+            disciplinaAtual.value = 'Banco de dados'
+            formdin.appendChild(disciplinaAtual);
+
+            // Adicionar formulário ao corpo do documento
+            document.body.appendChild(formdin);
+
+            // Enviar formulário
+            formdin.submit();
+
+        }
+
+
+    </script>
 </body>
+
 </html>
