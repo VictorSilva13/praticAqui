@@ -1,15 +1,154 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados</title>
-    <style>
-        
+
+    <!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultados</title>
+        <script>
+            var informacoesPorIP = {};   
+        </script>
+        <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif; /* Substitua pela fonte desejada */
+        }
+
+        .main-container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .main-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .input-subject {
+            margin-bottom: 20px;
+        }
+
+        .btn, th, td {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td {
+            background-color: white;
+            color: black;
+        }
     </style>
-</head>
-<body>
-    <h1>Pontuacoes</h1>
-</body>
-</html>
+    </head>
+    <body>
+        <div class="main-container">
+        <h2>Dados por IP</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Apelido</th>
+                    <th>Disciplinas</th>
+                </tr>
+            </thead>
+            <tbody id="dadosPorIP">
+                <!-- Os dados serão preenchidos dinamicamente aqui -->
+            </tbody>
+        </table>
+        <div class="main-box">
+            <h4 class="input-subject">Escolha a disciplina para praticar:</h4>
+            <button class="btn" type="button" onclick="enviarOpcao('R1main')">Redes de Computadores 1</button>
+            <button class="btn" type="button" onclick="enviarOpcao('R2main')">Redes de Computadores 2</button>
+            <button class="btn" type="button" onclick="enviarOpcao('BDmain')">Banco de Dados</button>
+            <button class="btn" type="button" onclick="enviarOpcao('E1main')">Eletromagnetismo 1</button>
+        </div>
+    </div>
+
+        <script>
+            // Adicione a lógica para preencher a tabela com os dados de informacoesPorIP
+            var tabela = document.getElementById('dadosPorIP');
+            for (var ip in informacoesPorIP) {
+                var tr = document.createElement('tr');
+
+                var tdIp = document.createElement('td');
+                tdIp.textContent = ip;
+                tr.appendChild(tdIp);
+
+                var tdApelido = document.createElement('td');
+                tdApelido.textContent = informacoesPorIP[ip].apelido;
+                tr.appendChild(tdApelido);
+
+                var tdDisciplinas = document.createElement('td');
+                var disciplinas = informacoesPorIP[ip].disciplinas;
+                var disciplinasString = '';
+                for (var disciplina in disciplinas) {
+                    disciplinasString += `${disciplina} - Nota: <strong>${disciplinas[disciplina]}</strong>/5, `;
+                }
+                // Remova a última vírgula e espaço em branco
+                disciplinasString = disciplinasString.slice(0, -2);
+                tdDisciplinas.innerHTML = disciplinasString;
+                tr.appendChild(tdDisciplinas);
+
+                tabela.appendChild(tr);
+            }
+        </script>
+        <script>
+            function enviarOpcao(disciplina){
+                var form = document.createElement('form');
+            form.method = 'post';
+            //form.action = '192.168.1.2:8080'; // Substitua pelo seu endereço de servidor
+
+            var campoDisciplina = document.createElement('input');
+            campoDisciplina.type = 'hidden';
+            campoDisciplina.name = 'disciplina';
+            campoDisciplina.value = disciplina;
+            form.appendChild(campoDisciplina);
+
+            // Adicionar formulário ao corpo do documento
+            document.body.appendChild(form);
+
+            // Enviar formulário
+            form.submit();
+            }     
+        </script>
+
+    </body>
+    </html>
+    
