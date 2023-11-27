@@ -118,7 +118,7 @@ def gerar_html():
     </div>
 
         <script>
-            // Adicione a lógica para preencher a tabela com os dados de informacoesPorIP
+            //Aqui fica a lógica para preencher a tabela com os dados de informacoesPorIP
             var tabela = document.getElementById('dadosPorIP');
             for (var ip in informacoesPorIP) {{
                 var tr = document.createElement('tr');
@@ -137,7 +137,7 @@ def gerar_html():
                 for (var disciplina in disciplinas) {{
                     disciplinasString += `${{disciplina}} - Nota: <strong>${{disciplinas[disciplina]}}</strong>/5, `;
                 }}
-                // Remova a última vírgula e espaço em branco
+                //Remove a última vírgula e espaço em branco
                 disciplinasString = disciplinasString.slice(0, -2);
                 tdDisciplinas.innerHTML = disciplinasString;
                 tr.appendChild(tdDisciplinas);
@@ -148,20 +148,19 @@ def gerar_html():
         <script>
             function enviarOpcao(disciplina){{
                 var form = document.createElement('form');
-            form.method = 'post';
-            //form.action = '192.168.1.2:8080'; // Substitua pelo seu endereço de servidor
+                form.method = 'post';
 
-            var campoDisciplina = document.createElement('input');
-            campoDisciplina.type = 'hidden';
-            campoDisciplina.name = 'disciplina';
-            campoDisciplina.value = disciplina;
-            form.appendChild(campoDisciplina);
+                var campoDisciplina = document.createElement('input');
+                campoDisciplina.type = 'hidden';
+                campoDisciplina.name = 'disciplina';
+                campoDisciplina.value = disciplina;
+                form.appendChild(campoDisciplina);
 
-            // Adicionar formulário ao corpo do documento
-            document.body.appendChild(form);
+                //Adiciona formulário ao corpo do documento
+                document.body.appendChild(form);
 
-            // Enviar formulário
-            form.submit();
+                //Envia formulário
+                form.submit();
             }}     
         </script>
 

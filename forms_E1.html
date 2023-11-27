@@ -8,9 +8,7 @@
     <style>
         body {
             background-color: #9aff9a;
-            /* Verde Claro */
             color: #fff;
-            /* Branco */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -25,7 +23,6 @@
             max-width: 600px;
             margin: 0 auto;
             background-color: #fff;
-            /* Branco */
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -49,9 +46,7 @@
 
         input[type="submit"] {
             background-color: #4caf50;
-            /* Verde */
             color: #fff;
-            /* Branco */
             padding: 15px;
             border: none;
             border-radius: 4px;
@@ -61,7 +56,6 @@
 
         input[type="submit"]:hover {
             background-color: #45a049;
-            /* Verde mais escuro */
         }
     </style>
 </head>
@@ -125,7 +119,7 @@
             const formData = new FormData(form);
             let pontuacao = 0;
 
-            // Compare as respostas com as respostas corretas
+            //Compara as respostas com as respostas corretas
             const respostasCorretas = {
                 pergunta1: 'd',
                 pergunta2: 'c',
@@ -135,7 +129,7 @@
             };
 
             formData.forEach((resposta, pergunta) => {
-                // Verifique se a resposta está correta
+                //Verifica se a resposta está correta
                 if (resposta === respostasCorretas[pergunta]) {
                     pontuacao++;
                 }
@@ -143,11 +137,11 @@
 
             alert(`Pontos: ${pontuacao}/5`);
 
-            // Criar um formulário dinâmico
+            //Cria um formulário dinâmico
             var formdin = document.createElement('form');
             formdin.method = 'post';
 
-            // Adicionar campos ao formulário
+            //Adiciona campos ao formulário
             var notaAtribuida = document.createElement('input');
             notaAtribuida.type = 'hidden';
             notaAtribuida.name = 'nota';
@@ -160,10 +154,10 @@
             disciplinaAtual.value = 'Eletromagnetismo 1'
             formdin.appendChild(disciplinaAtual);
 
-            // Adicionar formulário ao corpo do documento
+            //Adiciona formulário ao corpo do documento
             document.body.appendChild(formdin);
 
-            // Enviar formulário
+            //Envia formulário
             formdin.submit();
 
         }

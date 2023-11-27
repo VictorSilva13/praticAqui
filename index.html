@@ -39,12 +39,11 @@
                 return;
             }
 
-            // Criar um formulário dinâmico
+            //Cria um formulário dinâmico
             var form = document.createElement('form');
             form.method = 'post';
-            //form.action = '192.168.1.2:8080'; // Substitua pelo seu endereço de servidor
 
-            // Adicionar campos ao formulário
+            //Adiciona campos ao formulário
             var campoNome = document.createElement('input');
             campoNome.type = 'hidden';
             campoNome.name = 'nome';
@@ -57,10 +56,10 @@
             campoDisciplina.value = disciplina;
             form.appendChild(campoDisciplina);
 
-            // Adicionar formulário ao corpo do documento
+            //Adiciona formulário ao corpo do documento
             document.body.appendChild(form);
 
-            // Enviar formulário
+            //Envia formulário
             form.submit();
         }
         function validarEEnviarFormulario(disciplina) {
@@ -68,15 +67,15 @@
             var mensagem = document.getElementById('mensagem');
 
             if (mensagem.textContent === "") {
-                // Se não houver mensagem de erro, o nome é válido, então envie o formulário
+                //Se não houver mensagem de erro, o nome é válido, então envia o formulário
                 enviarFormulario(disciplina);
             }
         }
         function verificaString(str) {
-            // Expressão regular para verificar se a string contém apenas letras e números
+            //Expressão regular para verificar se a string contém apenas letras e números
             var regex = /^[a-zA-Z0-9]+$/;
 
-            // Testar a string contra a expressão regular
+            //Testa a string contra a expressão regular
             return regex.test(str);
         }
 

@@ -16,7 +16,7 @@
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
-            font-family: 'Arial', sans-serif; /* Substitua pela fonte desejada */
+            font-family: 'Arial', sans-serif;
         }
 
         .main-container {
@@ -89,7 +89,7 @@
                 </tr>
             </thead>
             <tbody id="dadosPorIP">
-                <!-- Os dados serão preenchidos dinamicamente aqui -->
+                <!-- Os dados serÃ£o preenchidos dinamicamente aqui -->
             </tbody>
         </table>
         <div class="main-box">
@@ -102,7 +102,7 @@
     </div>
 
         <script>
-            // Adicione a lógica para preencher a tabela com os dados de informacoesPorIP
+            
             var tabela = document.getElementById('dadosPorIP');
             for (var ip in informacoesPorIP) {
                 var tr = document.createElement('tr');
@@ -121,7 +121,7 @@
                 for (var disciplina in disciplinas) {
                     disciplinasString += `${disciplina} - Nota: <strong>${disciplinas[disciplina]}</strong>/5, `;
                 }
-                // Remova a última vírgula e espaço em branco
+                // Remove a Ãºltima vÃ­rgula e espaÃ§o em branco
                 disciplinasString = disciplinasString.slice(0, -2);
                 tdDisciplinas.innerHTML = disciplinasString;
                 tr.appendChild(tdDisciplinas);
@@ -133,7 +133,6 @@
             function enviarOpcao(disciplina){
                 var form = document.createElement('form');
             form.method = 'post';
-            //form.action = '192.168.1.2:8080'; // Substitua pelo seu endereço de servidor
 
             var campoDisciplina = document.createElement('input');
             campoDisciplina.type = 'hidden';
@@ -141,10 +140,10 @@
             campoDisciplina.value = disciplina;
             form.appendChild(campoDisciplina);
 
-            // Adicionar formulário ao corpo do documento
+            // Adicionar formulÃ¡rio ao corpo do documento
             document.body.appendChild(form);
 
-            // Enviar formulário
+            // Enviar formulÃ¡rio
             form.submit();
             }     
         </script>

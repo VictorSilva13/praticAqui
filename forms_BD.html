@@ -126,7 +126,7 @@
             const formData = new FormData(form);
             let pontuacao = 0;
 
-            // Compare as respostas com as respostas corretas
+            //Compara as respostas com as respostas corretas
             const respostasCorretas = {
                 pergunta1: 'c',
                 pergunta2: 'b',
@@ -136,7 +136,7 @@
             };
 
             formData.forEach((resposta, pergunta) => {
-                // Verifique se a resposta está correta
+                //Verifica se a resposta está correta
                 if (resposta === respostasCorretas[pergunta]) {
                     pontuacao++;
                 }
@@ -144,11 +144,11 @@
 
             alert(`Pontos: ${pontuacao}/5`);
 
-            // Criar um formulário dinâmico
+            //Cria um formulário dinâmico
             var formdin = document.createElement('form');
             formdin.method = 'post';
 
-            // Adicionar campos ao formulário
+            //Adiciona campos ao formulário
             var notaAtribuida = document.createElement('input');
             notaAtribuida.type = 'hidden';
             notaAtribuida.name = 'nota';
@@ -161,10 +161,10 @@
             disciplinaAtual.value = 'Banco de dados'
             formdin.appendChild(disciplinaAtual);
 
-            // Adicionar formulário ao corpo do documento
+            //Adiciona formulário ao corpo do documento
             document.body.appendChild(formdin);
 
-            // Enviar formulário
+            //Envia formulário
             formdin.submit();
 
         }
